@@ -1,0 +1,60 @@
+name: Deploy prototype to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Allow GITHUB_TOKEN to deploy to Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one concurrent deployment; don't cancel an in-progress one
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Export static web build
+        # No Supabase env vars are provided on purpose: the app falls back to
+        # mock mode (see src/services/supabase/client.ts) so the prototype is
+        # fully browsable without a backend.
+        run: npx expo export --platform web --output-dir dist
+
+      - name: Prepare output for GitHub Pages
+        run: |
+          # Jekyll strips underscore-prefixed dirs, which would 404 the _expo/ bundle
+          touch dist/.nojekyll
+          # SPA deep links (/home, /calendar, ...) must fall back to the app shell
+          cp dist/index.html dist/404.html
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
