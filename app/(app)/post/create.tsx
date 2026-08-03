@@ -156,7 +156,7 @@ export default function CreatePostScreen() {
       is_public: true,
       user: {
         id: userId,
-        display_name: user?.user_metadata?.display_name ?? 'Dev User',
+        display_name: user?.user_metadata?.display_name ?? '김지우',
         avatar_url: null,
       },
       restaurant: restaurantName

@@ -30,7 +30,7 @@ const MOCK_POSTS: FoodPost[] = [
     is_public: true,
     created_at: '2026-02-06T12:00:00Z',
     updated_at: '2026-02-06T12:00:00Z',
-    user: { id: 'dev-user', display_name: 'Food Explorer', avatar_url: null },
+    user: { id: 'dev-user', display_name: '김지우', avatar_url: null },
     restaurant: { id: 'r1', name: '라 피아차 강남점', address: '서울 강남구' },
     _count: { likes: 12, comments: 3 },
     is_liked: false,
@@ -50,7 +50,7 @@ const MOCK_POSTS: FoodPost[] = [
     is_public: true,
     created_at: '2026-01-22T18:30:00Z',
     updated_at: '2026-01-22T18:30:00Z',
-    user: { id: 'dev-user', display_name: 'Food Explorer', avatar_url: null },
+    user: { id: 'dev-user', display_name: '김지우', avatar_url: null },
     restaurant: { id: 'r2', name: '멘야하나비 홍대점', address: '서울 마포구' },
     _count: { likes: 8, comments: 1 },
     is_liked: true,
@@ -70,7 +70,7 @@ const MOCK_POSTS: FoodPost[] = [
     is_public: true,
     created_at: '2026-02-26T15:00:00Z',
     updated_at: '2026-02-26T15:00:00Z',
-    user: { id: 'dev-user', display_name: 'Food Explorer', avatar_url: null },
+    user: { id: 'dev-user', display_name: '김지우', avatar_url: null },
     restaurant: { id: 'r3', name: '르 크레이프 성수', address: '서울 성동구' },
     _count: { likes: 24, comments: 5 },
     is_liked: false,
@@ -90,7 +90,7 @@ const MOCK_POSTS: FoodPost[] = [
     is_public: true,
     created_at: '2026-02-25T12:30:00Z',
     updated_at: '2026-02-25T12:30:00Z',
-    user: { id: 'dev-user', display_name: 'Food Explorer', avatar_url: null },
+    user: { id: 'dev-user', display_name: '김지우', avatar_url: null },
     restaurant: { id: 'r4', name: '엄마손 정식', address: '서울 강남구' },
     _count: { likes: 2, comments: 0 },
     is_liked: false,
@@ -124,7 +124,7 @@ const MOCK_COMMENTS: Comment[] = [
     content: '디아볼라도 맛있어요! 매콤한 거 좋아하시면 추천!',
     parent_id: 'c2',
     created_at: '2026-02-28T16:00:00Z',
-    user: { id: 'dev-user', display_name: 'Food Explorer', avatar_url: null },
+    user: { id: 'dev-user', display_name: '김지우', avatar_url: null },
   },
   {
     id: 'c4',
@@ -390,7 +390,7 @@ export const usePostStore = create<PostState>((set, get) => ({
       content,
       parent_id: parentId ?? null,
       created_at: new Date().toISOString(),
-      user: { id: 'dev-user', display_name: 'Food Explorer', avatar_url: null },
+      user: { id: 'dev-user', display_name: '김지우', avatar_url: null },
     };
     // Optimistic update
     set((state) => ({

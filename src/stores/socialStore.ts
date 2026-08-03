@@ -45,7 +45,7 @@ const MOCK_USERS: UserProfile[] = [
   },
   {
     id: 'dev-user',
-    display_name: 'Food Explorer',
+    display_name: '김지우',
     avatar_url: null,
     bio: '내가 먹은 것들 기록용',
     total_posts: 4,

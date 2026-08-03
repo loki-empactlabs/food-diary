@@ -73,7 +73,7 @@ export default function TasteProfileScreen() {
     return TASTE_KEYWORDS.filter((kw) => allTags.has(kw.tag));
   }, [myPosts]);
 
-  const displayName = user?.user_metadata?.display_name ?? 'Dev User';
+  const displayName = user?.user_metadata?.display_name ?? '김지우';
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>

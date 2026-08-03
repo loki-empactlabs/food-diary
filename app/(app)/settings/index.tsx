@@ -92,7 +92,7 @@ export default function SettingsScreen() {
           <SettingRow
             icon="person-outline"
             label="프로필 편집"
-            value={user?.user_metadata?.display_name ?? 'Dev User'}
+            value={user?.user_metadata?.display_name ?? '김지우'}
             onPress={() => showToast('프로필 편집 기능은 준비 중입니다.')}
           />
           <SettingRow icon="mail-outline" label="이메일" value={user?.email ?? 'dev@fooddiary.local'} showArrow={false} />

@@ -82,7 +82,7 @@ export default function SignInScreen() {
         id: 'dev-user-001',
         email: 'dev@fooddiary.app',
         app_metadata: {},
-        user_metadata: { display_name: 'Dev User' },
+        user_metadata: { display_name: '김지우' },
         aud: 'authenticated',
         created_at: new Date().toISOString(),
       },
@@ -117,7 +117,7 @@ export default function SignInScreen() {
           const { error: signUpError } = await supabase.auth.signUp({
             email: 'dev@fooddiary.app',
             password: 'devtest123!',
-            options: { data: { display_name: 'Dev User', full_name: 'Dev User' } },
+            options: { data: { display_name: '김지우', full_name: '김지우' } },
           });
           if (signUpError) {
             console.error('Dev sign up error:', signUpError.message);
