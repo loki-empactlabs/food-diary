@@ -79,7 +79,10 @@ export default function SignInScreen() {
       expires_in: 3600,
       token_type: 'bearer',
       user: {
-        id: 'dev-user-001',
+        // Must match MOCK_POSTS.user_id in postStore — screens filter by
+        // `p.user_id === user?.id`, so a different id empties every my-records view
+        // (taste profile, statistics, profile, revisit, nearby).
+        id: 'dev-user',
         email: 'dev@fooddiary.app',
         app_metadata: {},
         user_metadata: { display_name: '김지우' },
