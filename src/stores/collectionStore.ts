@@ -24,7 +24,7 @@ const MOCK_COLLECTIONS: Collection[] = [
   },
   {
     id: 'c1',
-    name: '맛집 TOP',
+    name: '또 갈 곳',
     post_ids: ['1', '3'],
     created_at: '2026-02-20T00:00:00Z',
   },
