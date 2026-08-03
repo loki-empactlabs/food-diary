@@ -18,7 +18,7 @@ import { env } from '@/src/config/env';
 
 Sentry.init({
   dsn: env.SENTRY_DSN,
-  enabled: !__DEV__,
+  enabled: !__DEV__ && !!env.SENTRY_DSN,
   tracesSampleRate: 0.2,
 });
 
@@ -88,27 +88,35 @@ export default function RootLayout() {
     );
   }
 
-  const content = (
+  const app = (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider>
+          <AuthGate>
+            <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="index" />
+              <Stack.Screen name="(auth)" />
+              <Stack.Screen name="(app)" />
+              <Stack.Screen name="+not-found" />
+            </Stack>
+          </AuthGate>
+          <ToastProvider />
+        </ThemeProvider>
+      </QueryClientProvider>
+    </GestureHandlerRootView>
+  );
+
+  // PostHogProvider throws if apiKey is empty, even with disabled: true — so skip
+  // the provider entirely when no key is configured (mock/prototype builds).
+  const content = env.POSTHOG_API_KEY ? (
     <PostHogProvider
       apiKey={env.POSTHOG_API_KEY}
-      options={{ host: env.POSTHOG_HOST, disabled: !env.POSTHOG_API_KEY }}
+      options={{ host: env.POSTHOG_HOST }}
     >
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <QueryClientProvider client={queryClient}>
-          <ThemeProvider>
-            <AuthGate>
-              <Stack screenOptions={{ headerShown: false }}>
-                <Stack.Screen name="index" />
-                <Stack.Screen name="(auth)" />
-                <Stack.Screen name="(app)" />
-                <Stack.Screen name="+not-found" />
-              </Stack>
-            </AuthGate>
-            <ToastProvider />
-          </ThemeProvider>
-        </QueryClientProvider>
-      </GestureHandlerRootView>
+      {app}
     </PostHogProvider>
+  ) : (
+    app
   );
 
   if (Platform.OS === 'web') {
