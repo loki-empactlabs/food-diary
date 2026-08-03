@@ -42,7 +42,7 @@ beforeEach(() => {
         image_urls: ['https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80'],
         thumbnail_urls: ['https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=60'],
         rating: 5,
-        comment: '도우가 정말 바삭하고 치즈가 쭉쭉 늘어나요.',
+        comment: '도우 얇고 바삭. 치즈 쭉쭉 늘어남.',
         menu_name: '마르게리타 피자',
         price: 18000,
         tags: ['피자', '이탈리안', '강남맛집'],
@@ -62,7 +62,7 @@ beforeEach(() => {
         image_urls: ['https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=800&q=80'],
         thumbnail_urls: ['https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&q=60'],
         rating: 4,
-        comment: '국물이 진하고 면발이 쫄깃해서 좋았어요.',
+        comment: '국물 진하고 면 쫄깃. 차슈 부드러웠음.',
         menu_name: '돈코츠 라멘',
         price: 12000,
         tags: ['라멘', '일식', '홍대'],
@@ -300,7 +300,7 @@ describe('postStore', () => {
 
       const updated = getState().getPost('1')!;
       expect(updated.menu_name).toBe('마르게리타 피자');
-      expect(updated.comment).toBe('도우가 정말 바삭하고 치즈가 쭉쭉 늘어나요.');
+      expect(updated.comment).toBe('도우 얇고 바삭. 치즈 쭉쭉 늘어남.');
     });
   });
 
